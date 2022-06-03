@@ -31,7 +31,7 @@ const questionsManager = [
 ];
 
 
-const questionEngineer = [
+const questionsEngineer = [
     {
          
         type: 'input',
@@ -62,7 +62,7 @@ const questionEngineer = [
     
 ];
 
-const questionIntern = [
+const questionsIntern = [
     {
          
         type: 'input',
@@ -93,66 +93,31 @@ const questionIntern = [
     
 ];
 
+class Questions {
+    constructor(roleQuestions){
+        this.roleQuestions = roleQuestions;
+    }
+
+    promptQuestions(){
+        inquirer
+        .prompt(this.roleQuestions)
+        .then((answers) => {
+
+            if (answers.role === 'Engineer') {
+                engineer.promptQuestions();
+            } else if(answers.role === 'Intern'){
+                intern.promptQuestions();
+            }
+        })
+    }
+}
+
+const manager = new Questions(questionsManager);
+const engineer = new Questions(questionsEngineer);
+const intern = new Questions(questionsIntern);
+
 function init(){
-inquirer
-  .prompt(questionsManager)
-  .then((answers) => {
-
-      if (answers.role === 'Engineer') {
-          promptEngineer();
-      } else if(answers.role === 'Intern'){
-          promptIntern();
-      }
-      
-  })
-  .catch((error) => {
-    if (error.isTtyError) {
-      // Prompt couldn't be rendered in the current environment
-    } else {
-      // Something else went wrong
-    }
-  });
+manager.promptQuestions();
 }
-
-function promptEngineer(){
-    inquirer
-  .prompt(questionEngineer)
-  .then((answers) => {
-
-    if (answers.role === 'Engineer') {
-        promptEngineer();
-    } else if(answers.role === 'Intern'){
-        promptIntern();
-    }
-  })
-  .catch((error) => {
-    if (error.isTtyError) {
-      // Prompt couldn't be rendered in the current environment
-    } else {
-      // Something else went wrong
-    }
-  });
-}
-
-function promptIntern(){
-    inquirer
-  .prompt(questionIntern)
-  .then((answers) => {
-
-   if (answers.role === 'Engineer') {
-          promptEngineer();
-      } else if(answers.role === 'Intern'){
-          promptIntern();
-      }
-  })
-  .catch((error) => {
-    if (error.isTtyError) {
-      // Prompt couldn't be rendered in the current environment
-    } else {
-      // Something else went wrong
-    }
-  });
-}
-
 
 init();
