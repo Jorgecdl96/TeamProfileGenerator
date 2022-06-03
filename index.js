@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const fs = require('fs');
 
 const questionsManager = [
     {
@@ -137,7 +138,7 @@ function promptIntern(){
     inquirer
   .prompt(questionIntern)
   .then((answers) => {
-      
+
    if (answers.role === 'Engineer') {
           promptEngineer();
       } else if(answers.role === 'Intern'){
