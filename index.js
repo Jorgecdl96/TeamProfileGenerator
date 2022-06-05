@@ -93,6 +93,27 @@ const questionsIntern = [
     
 ];
 
+class Questions {
+    constructor(roleQuestions){
+        this.roleQuestions = roleQuestions;
+    }
+    
+    promptQuestions(){
+        inquirer
+        .prompt(this.roleQuestions)
+        .then((answers) => {
+            
+            htmlCreation(answers);
+            
+        })
+        
+    }
+}
+
+const manager = new Questions(questionsManager);
+const engineer = new Questions(questionsEngineer);
+const intern = new Questions(questionsIntern);
+
  
 
 function htmlCreation(answers){
@@ -121,7 +142,7 @@ if(managerName){
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${managerID}</li>
-                <li class="list-group-item">Email: ${managerEmail}</li>
+                <li class="list-group-item nav-item">Email: <a href="mailto:${managerEmail}" >${managerEmail}</a></li>
                 <li class="list-group-item">Office number: ${managerOffice}</li>
               </ul> 
         </div>
@@ -141,10 +162,10 @@ if(engineerName){
     </div>
     <ul class="list-group list-group-flush">
         <li class="list-group-item">ID: ${engineerID}</li>
-        <li class="list-group-item">Email: ${engineerEmail}</li>
-        <li class="list-group-item">Office number: ${github}</li>
+        <li class="list-group-item">Email: <a href="mailto:${engineerEmail}" >${engineerEmail}</a></li>
+        <li class="list-group-item">GitHub: <a href="https://github.com/${github}" target="_blank">${github}</a></li>
       </ul> 
-</div>
+    </div>
 `
 
 fs.appendFile('index2.html', engineerContent, (err) => {
@@ -163,10 +184,10 @@ if(internName){
     </div>
     <ul class="list-group list-group-flush">
         <li class="list-group-item">ID: ${internID}</li>
-        <li class="list-group-item">Email: ${internEmail}</li>
-        <li class="list-group-item">Office number: ${school}</li>
+        <li class="list-group-item">Email: <a href="mailto:${internEmail}">${internEmail}</a></li>
+        <li class="list-group-item">School: ${school}</li>
       </ul> 
-</div>
+    </div>
 `
 
 fs.appendFile('index2.html', internContent, (err) => {
@@ -186,41 +207,21 @@ switch (role) {
             break;
         default:
         const finalContent = `</div>
-</body>
-</html>`  
+    </body>
+    </html>`  
+
+    setInterval(() => {
         fs.appendFile('index2.html',finalContent, (err) =>{
         if (err) {
             console.log(err);
         }
         })
+        
+    }, 2000);
             break;
         }
-        
-        
-        
+         
 }
-
-
-class Questions {
-    constructor(roleQuestions){
-        this.roleQuestions = roleQuestions;
-    }
-    
-    promptQuestions(){
-        inquirer
-        .prompt(this.roleQuestions)
-        .then((answers) => {
-            
-            htmlCreation(answers);
-            
-        })
-        
-    }
-}
-
-const manager = new Questions(questionsManager);
-const engineer = new Questions(questionsEngineer);
-const intern = new Questions(questionsIntern);
 
 
 function init(){
