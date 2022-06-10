@@ -19,7 +19,7 @@ This application takes the information about employees on a software engineering
 
 ## Installation
 
-The Package json is already added in thsi project, so you should only have to to install it in your terminal typing the following'npm i'.
+The Package json is already added in this project, so you should only have to to install it in your terminal typing the following 'npm i'.
 
 ## Usage
 
