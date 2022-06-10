@@ -65,6 +65,6 @@ You can send an e-mail to Jorgecdl96@gmail.com for any additional question.
 
 ## Walkthrough Video
 
-You can see in the video how all the tests pass and the HTML generated within 'dist' folder by clicking on link below:
+You can see in the video how all the tests pass and the Team Profile generated within 'dist' folder by clicking on link below:
 
-[Video]()
+[Team Profile Generator Video](https://drive.google.com/file/d/1-BpQqAwhmI74hMqcrdTjF1IAGzQgEkFl/view?usp=sharing)
