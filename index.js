@@ -1,7 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const {generateManager,generateIntern,generateEngineer, generateHTML} = require('./src/template');
-const { Console } = require('console');
+const {generateManager,generateIntern,generateEngineer} = require('./src/template');
 
 const questionsManager = [
     {
